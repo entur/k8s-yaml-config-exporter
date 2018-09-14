@@ -9,3 +9,10 @@ Supports multiple projects for destination paths.
 
 ## Specifying types to export
 `TYPES="deployment" ./k8s_yaml_exporter.sh`
+
+## Specifying destination folder
+`BASEPATH=../devsetup/roles/cloud/files/ ./k8s_yaml_exporter.sh`
+
+
+## Licence
+Licensed under the EUPL, Version 1.2. See LICENSE.txt
