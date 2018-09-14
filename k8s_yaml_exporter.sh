@@ -78,7 +78,7 @@ then
             tmpFile="/tmp/tmpfileforme"
 
 
-            kubectl  ${namespaceArgument} get --export -o=json ${type} ${name} | jq --sort-keys \
+            kubectl  ${namespaceArgument} get -o=json ${type} ${name} | jq --sort-keys \
             'del(
                 .metadata.annotations."autoscaling.alpha.kubernetes.io/conditions",
                 .metadata.annotations."autoscaling.alpha.kubernetes.io/current-metrics",
