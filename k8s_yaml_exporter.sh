@@ -36,7 +36,7 @@ fi
 project=$(kubectl config current-context |  sed 's/.*_//' |  sed 's/-.*//');
 
 # Tip: export all projects:
-# for project in carbon neon radon; do echo $project; gcp_context.sh $project; ./update_kubernetes_yaml_files.sh; done
+# for project in carbon neon radon; do echo $project; gcp_context.sh $project; ./k8s_yaml_exporter.sh; done
 
 read -p "Hello $USER. Do you want to export yaml files for gcp k8s ${project} to base path ${BASEPATH}?" -n 1 -r
 echo
