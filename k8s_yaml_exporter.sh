@@ -32,7 +32,7 @@ fi
 # What kuberentes types to export. SINGULARITY
 
 # export of clusterrolebinding is not supported
-: ${TYPES="configmap daemonset persistentvolume deployment statefulset service persistentvolumeclaim cronjob horizontalpodautoscaler ingress replicationcontroller podtemplate"}
+: ${TYPES="configmap daemonset persistentvolume deployment statefulset service persistentvolumeclaim cronjob horizontalpodautoscaler ingress replicationcontroller podtemplate PodDisruptionBudget"}
 project=$(kubectl config current-context |  sed 's/.*_//' |  sed 's/-.*//');
 
 # Tip: export all projects:
