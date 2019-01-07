@@ -1,0 +1,54 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  annotations: {}
+  name: k8s-resources-backup
+  namespace: default
+spec:
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - env:
+            - name: CLUSTER_NAME
+              value: "minikube"
+            - name: GIT_USERNAME
+              value: "gitbackup"
+            - name: GIT_USER_EMAIL
+              value: "gitbackup@host.com"
+            volumeMounts:
+            - name: k8s-resources-backup-ssh
+              mountPath: /backup/.ssh/
+            - name:  k8s-resources-backup-config
+              mountPath: /config.yaml
+              subPath: config.yaml
+            image: IMAGE:TAG
+            imagePullPolicy: Always
+            name: k8s-resources-backup
+            resources:
+              limits:
+                cpu: 200m
+                memory: 150Mi
+              requests:
+                cpu: 150m
+                memory: 100Mi
+          volumes:
+          - name: k8s-resources-backup-ssh
+            secret:
+              secretName: k8s-resources-backup-ssh
+          - name: k8s-resources-backup-config
+            configMap:
+              name: k8s-resources-backup-cronjob-config
+          restartPolicy: Never
+          securityContext: {}
+          terminationGracePeriodSeconds: 30
+  schedule: '10 * * * *'
+  successfulJobsHistoryLimit: 1
+
