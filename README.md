@@ -67,12 +67,15 @@ type: Opaque
 ```
 
 ### Kubernetes
-Deploying using HELM.
-Add the following variables to helm deploy;
+Deploying using kubectl
 
-CLUSTER_NAME (kubernetes api has no way to know the cluster name, therefore need this variable on kubernetes)
+1. create secret; `kubectl create secret generic k8s-resources-backup-ssh --from-file=id_rsa=id_rsa --from-file=known_hosts=known_hosts`
 
-TODO!: ADD NEW FILES ALSO! NOT ONLY CHANGES!
-        HELM CHART
+2. apply rbac; `kubectl apply -f k8s-resources-backup-rbac.yaml`
+
+3. apply configmap; `kubectl apply -f k8s-resources-backup-configmap.yaml`
+
+4. run cronjob; `kubectl apply -f k8s-resources-backup-cronjob.yaml`
+
 ---
 
