@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  config.yaml: |
+    git:
+        commits_to_print: 5
+        repo_path: '/tmp/git'
+        remote_repo: 'git@HOST:REPO.git'
+        remote_branch: 'master'
+    kubernetes:
+        kube_system_filter: [] 
+        namespaces: [
+            default,
+            ]
+        resource_types: [
+            daemonset,
+            deployment,
+            ]
+kind: ConfigMap
+metadata:
+  name: k8s-resources-backup-cronjob-config
+  namespace: default

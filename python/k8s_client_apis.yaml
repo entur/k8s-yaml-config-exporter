@@ -1,0 +1,31 @@
+k8s_client_apis:
+  list_apis:
+      deployment: client.AppsV1Api().list_namespaced_deployment
+      daemonset: client.AppsV1Api().list_namespaced_daemon_set
+      statefulset: client.AppsV1Api().list_namespaced_stateful_set
+      horizontalpodautoscaler: client.AutoscalingV1Api().list_namespaced_horizontal_pod_autoscaler
+      job: client.BatchV1Api().list_namespaced_job
+      cronjob: client.BatchV1beta1Api().list_namespaced_cron_job
+      configmap: client.CoreV1Api().list_namespaced_config_map
+      persistentvolume: client.CoreV1Api().list_persistent_volume
+      persistentvolumeclaim: client.CoreV1Api().list_namespaced_persistent_volume_claim
+      podtemplate: client.CoreV1Api().list_namespaced_pod_template
+      replicationcontroller: client.CoreV1Api().list_namespaced_replication_controller
+      service: client.CoreV1Api().list_namespaced_service
+      ingress: client.ExtensionsV1beta1Api().list_namespaced_ingress
+      poddistrubtionBudget: client.PolicyV1beta1Api().list_namespaced_pod_disruption_budget
+  read_apis:
+      deployment: client.AppsV1Api().read_namespaced_deployment
+      daemonset: client.AppsV1Api().read_namespaced_daemon_set
+      statefulset: client.AppsV1Api().read_namespaced_stateful_set
+      horizontalpodautoscaler: client.AutoscalingV1Api().read_namespaced_horizontal_pod_autoscaler
+      job: client.BatchV1Api().read_namespaced_job
+      cronjob: client.BatchV1beta1Api().read_namespaced_cron_job
+      configmap: client.CoreV1Api().read_namespaced_config_map
+      persistentvolume: client.CoreV1Api().read_persistent_volume
+      persistentvolumeclaim: client.CoreV1Api().read_namespaced_persistent_volume_claim
+      podtemplate: client.CoreV1Api().read_namespaced_pod_template
+      replicationcontroller: client.CoreV1Api().read_namespaced_replication_controller
+      service: client.CoreV1Api().read_namespaced_service
+      ingress: client.ExtensionsV1beta1Api().read_namespaced_ingress
+      poddistrubtionBudget: client.PolicyV1beta1Api().read_namespaced_pod_disruption_budget

@@ -1,0 +1,28 @@
+# App configuration
+git:
+    commits_to_print: 5
+    repo_path: '/tmp/git'
+    remote_repo: 'git@HOST:REPO.git'
+    remote_branch: 'master'
+kubernetes:
+    kube_system_filter: [] # pick apps from kube-system namespace, leave [] and add kube-system below for all
+    namespaces: [
+        default,
+        metrics
+        ]
+    resource_types: [
+        daemonset,
+        deployment,
+        statefulset,
+        horizontalpodautoscaler,
+        job,
+        cronjob,
+        configmap,
+        persistentvolume,
+        persistentvolumeclaim,
+        podtemplate,
+        replicationcontroller,
+        service,
+        ingress,
+        poddistrubtionBudget,
+        ]

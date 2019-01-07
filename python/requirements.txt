@@ -1,0 +1,3 @@
+pyyaml>=3.12  # MIT
+kubernetes==6.0.0 # Apache-2.0
+GitPython>=2.1.11 # BSD 2
