@@ -72,6 +72,13 @@ Deploying using kubectl
 1. create secret; `kubectl create secret generic k8s-resources-backup-ssh --from-file=id_rsa=id_rsa --from-file=known_hosts=known_hosts`
 
 2. apply rbac; `kubectl apply -f k8s-resources-backup-rbac.yaml`
+If any errors, you might need permissions. try;
+
+```
+kubectl create clusterrolebinding cluster-admin-binding \
+  --clusterrole cluster-admin \
+  --user $(gcloud config get-value account)
+```
 
 3. apply configmap; `kubectl apply -f k8s-resources-backup-configmap.yaml`
 
