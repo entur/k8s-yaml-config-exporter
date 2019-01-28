@@ -1,6 +1,7 @@
 import json
 import yaml
 import os
+from shutil import rmtree
 
 from itertools import product
 from kubernetes import client,config
@@ -29,7 +30,6 @@ def k8s_yaml_exporter():
             quit()
         print("found CLUSTER_NAME, CLUSTER_NAME=", cluster_name)
 
-
     # Get k8s_client apis
     with open("k8s_client_apis.yaml", 'r') as ymlfile:
         api_mapping = yaml.load(ymlfile)
@@ -46,6 +46,12 @@ def k8s_yaml_exporter():
     resource_types = app_config['kubernetes']['resource_types']
     kube_system_apps = app_config['kubernetes']['kube_system_filter']
 
+    # Keep old files?
+    keep_old = os.environ.get('KEEP_OLD', True)
+    if keep_old.lower() == 'false':
+        cluster_dir_path = Path(backup_dir +  '/' + cluster_name)
+        print('Not keeping old files...')
+        rmtree(cluster_dir_path, ignore_errors=True)
 
     # Loop through each resourcetype in each namespace
     for namespace,resource_type in product(namespaces,resource_types):

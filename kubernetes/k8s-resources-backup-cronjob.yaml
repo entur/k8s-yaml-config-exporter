@@ -19,6 +19,8 @@ spec:
           - env:
             - name: CLUSTER_NAME
               value: "minikube"
+            - name: KEEP_OLD
+              value: "True"
             - name: GIT_USERNAME
               value: "gitbackup"
             - name: GIT_USER_EMAIL

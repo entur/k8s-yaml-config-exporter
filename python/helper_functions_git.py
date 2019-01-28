@@ -60,15 +60,15 @@ def commit_and_push_changes(repo):
     # get time
     now = str(datetime.datetime.now()).split('.')[0]
 
-    # Commit changes and print diffs
+    # Commit changes
     diffs = repo.git.diff('HEAD', name_only=True)
     if diffs:
         for file in diffs.split('\n'):
             print('----')
-            print(repo.git.diff(file))
             repo.git.add(file)
             print('Added: ',file)
-            
+
+
     # Take care of untraceked files
     untracked_files = repo.untracked_files
     if untracked_files:

@@ -37,6 +37,11 @@ or run:
 python3 main.py
 ```
 
+**NOTE** There are two environment variables available:
+  - CLUSTER_NAME: Overwrites the folder name
+  - KEEP_OLD: defaults to True. Set to false to delete files that are no longer running in cluster.
+
+
 ## Run as k8s job in cluster.
 Run as cronjob in local kubernetes cluster.
 
