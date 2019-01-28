@@ -7,6 +7,8 @@ RUN apk update && \
     curl && \
     rm -rf /var/cache/apk/*
 
+RUN pip3 install --upgrade pip
+
 RUN adduser -h /backup -D backup
 
 ENV PATH="/:${PATH}"
