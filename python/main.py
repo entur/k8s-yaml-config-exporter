@@ -1,8 +1,11 @@
 import os
 import yaml
 import sys
+import time
+
 
 from pathlib import Path
+
 
 from helper_functions_git import (
     clone_repo,
@@ -12,6 +15,10 @@ from k8s_yaml_exporter import k8s_yaml_exporter
 
 
 def main():
+    
+    # Sleep for some seconds
+    time.sleep(10)
+    
     # read config from configuration file; config.yaml
     with open("config.yaml", 'r') as ymlfile:
         app_config = yaml.load(ymlfile)
